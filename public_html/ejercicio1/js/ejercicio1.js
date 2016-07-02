@@ -61,16 +61,37 @@ console.log("Segundos que tienen "+n+" meses: " + resultadoMeses);
 
 //ejercicio7
 console.log("7. Maximo, minimo , medio");
- var v =[7,5,3,8,2];
+ var v =[7,5,3,8,2,9];
  var  max = Math.max.apply(null,v);
  var  min = Math.min.apply(null,v);
- var media;
+ var media=0;
  for (var i = 0; i < v.length; i++) {
     media += v[i];
 }
 
+//calcular la media del valor
+media=media/v.length;
+
+//poner solo 2 dicimales.
+var mediaDecimales = media.toFixed(2);
+
 console.log("Maximo número del array: "+ max);
 console.log("Maximo número del array: "+ min);
-console.log("Maximo número del array: "+ v[4]);
+console.log("Maximo número del array: "+ mediaDecimales);
 
+//ejercicio8
+console.log("8.");
+var v2=[4,9,6,1,7,8,5,3,0,2];
+var sumaMenores=0;
 
+for (var i = 0; i < v2.length; i++) {
+    if (v2[i]<6) {
+        sumaMenores+=v2[i];
+    }
+}
+console.log("Suma de los componentes menores de 6: "+sumaMenores);
+
+//ejercicio9
+console.log("9.");
+var v3;
+var v4;
