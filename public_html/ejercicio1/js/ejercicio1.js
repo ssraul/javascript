@@ -93,5 +93,22 @@ console.log("Suma de los componentes menores de 6: "+sumaMenores);
 
 //ejercicio9
 console.log("9.");
-var v3;
-var v4;
+var v3=[4,9,6,1,7,8,5,3,0,2];
+var v4=[];
+
+for (var i = 0; i < v3.length; i++) {
+    if (v3[i]<=4) {
+        v4.push(v3[i]);
+    }
+}
+console.log("vector con: "+v4.length+ " componetes superiores o iguales a 4, que son:");
+for (var i = 0; i < v4.length; i++) {
+    console.log(v4[i]);
+}
+
+//ejercicio10
+console.log("10.nº de letras de una palabra");
+var palabra="hola";
+console.log(palabra.length);
+
+
