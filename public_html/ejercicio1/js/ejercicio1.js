@@ -62,7 +62,7 @@ console.log("Valor de A "+myModul.A);// los podemos recuperar;
 
 
 //ejercicio2
-console.log("2.\n");
+console.log("Ejercicio 2.\n");
 
 var catetoA = 4;
 var catetoB = 4;
@@ -74,7 +74,7 @@ var perimetroTriangulo = catetoA + catetoB +catetoC;
 console.log("Perimetro del triangulo rectangulo: "+perimetroTriangulo);
 
 //ejercicio3
-console.log("3.\n");
+console.log("Ejercicio 3.\n");
 var segundos = 1056789;
 var minutos = segundos/60;
 var horas = minutos/60;
@@ -82,7 +82,7 @@ var dias = horas/24;
 console.log(segundos +" Segundos son:\nDias: "+dias.toFixed(0)+"\nHoras: "+horas.toFixed(0)+"\nMinutos: "+minutos.toFixed(0)+"");
 
 //ejercicio4
-console.log("4.");
+console.log("Ejercicio 4.");
 var intereses;
 var cantidad = 50000;
 var dias = 90;
@@ -92,7 +92,7 @@ intereses=((cantidad*intNominal*dias)/36000);
 console.log(intereses);
 
 //ejercicio5
-console.log("5.");
+console.log("Ejercicio 5.");
 var suma=0;
 for (var i = 0; i < 100; i++) {
     suma+= i;
@@ -111,7 +111,7 @@ var resultadoMeses = n* mes;
 console.log("Segundos que tienen "+n+" meses: " + resultadoMeses);
 
 //ejercicio7
-console.log("7. Maximo, minimo , medio");
+console.log("Ejercicio 7. Maximo, minimo , medio");
  var v =[7,5,3,8,2,9];
  var  max = Math.max.apply(null,v);
  var  min = Math.min.apply(null,v);
@@ -131,7 +131,7 @@ console.log("Maximo número del array: "+ min);
 console.log("Maximo número del array: "+ mediaDecimales);
 
 //ejercicio8
-console.log("8.");
+console.log("Ejercicio 8.");
 var v2=[4,9,6,1,7,8,5,3,0,2];
 var sumaMenores=0;
 
@@ -143,7 +143,7 @@ for (var i = 0; i < v2.length; i++) {
 console.log("Suma de los componentes menores de 6: "+sumaMenores);
 
 //ejercicio9
-console.log("9.");
+console.log("Ejercicio 9.");
 var v3=[4,9,6,1,7,8,5,3,0,2];
 var v4=[];
 
@@ -152,13 +152,13 @@ for (var i = 0; i < v3.length; i++) {
         v4.push(v3[i]);
     }
 }
-console.log("vector con: "+v4.length+ " componetes superiores o iguales a 4, que son:");
+console.log("vector con: "+v4.length+ " componetes inferior o iguales a 4, que son:");
 for (var i = 0; i < v4.length; i++) {
     console.log(v4[i]);
 }
 
 //ejercicio10
-console.log("10.nº de letras de una palabra");
+console.log("Ejercicio 10.nº de letras de una palabra");
 var palabra="hola";
 console.log(palabra.length);
 
@@ -176,7 +176,7 @@ var horoscopo=( function (){
 
 
 //ejercicio12
-console.log("12.");
+console.log("Ejercicio 12.");
 var v5=[4,9,6,1,7,8,5,3,0,2];
 for (var i = 1; i < v5.length; i++) {
     for (var j = 0; j < v5.length-1; j++) {
@@ -199,6 +199,30 @@ var posicion = (function (){
     var v14=[4,9,6,1,7,8,5,3,0,2];
     var numero=5;
     console.log("la posición del número 5 es: "+v14.indexOf(numero));
+})();
+
+//otra forma ejerccio 14.
+var ex14=( function (){
+    var x, v, pos, i;
+    x =5;
+    v=[4,9,6,5,7,8,5,3,0,2];
+    pos =-1;
+    for (i = 0; i < v.length; i++) {
+        if (v[i]===x) {
+            pos = i;
+            break;
+        }
+    }    
+    console.log("la posición es la: "+pos);
+})();
+
+//ejercicio15.
+console.log("Ejercicio 15.");
+
+var orden = (function (){
+    var matrizLetras=["e","t","f","d","a","z","r","o"];
+    var ordenar=matrizLetras.sort();
+    console.log(ordenar);
 })();
 
 //ejercicio16
@@ -306,4 +330,19 @@ my.m=8;
 console.log(my.area());
 console.log(my.perimetro());
 my.imprimir();
+
+
+//ejercicio20.
+console.log("Ejercicio 20.");
+
+    
+console.log("funciones");
+var x1=5;
+var y1=6;
+
+function sumar(a,b){
+    return a+b;
+    
+};
+console.log(sumar(x1,y1));
 
