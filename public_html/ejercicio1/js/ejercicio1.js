@@ -296,6 +296,36 @@ var validarDni = (function () {
     }
 })();
 
+console.log("Ejercicio 19. de otra forma.");
+var ex019 = (function () {
+    var dni = "89217127N";
+    if (validarDNI(dni)) {
+        missatge = "El DNI/NIE" + dni + " es correcto";
+
+    } else {
+        missatge = "El DNI/NIE" + dni + " es incorrecto";
+    }
+    function validarDNI(myDni) {
+        if (myDni.length !== 9)
+            return false;
+        var i;
+        myDni.toUpperCase();//todo a mayusculas.
+        var lletra = "TRWAGMYFPDXBNJZSQVHLCKEO";
+        for (i = 0; i < myDni.length; i++) {
+
+            if (myDni[0] !== 'X' || myDni[0] !== 'Y' || !Number.isInteger(myDni[i])) {
+                return false;
+
+            } else if (i >= 1 && i <= 7 && !Number.isInteger(myDni[i])) {
+                return false;
+            } else if (i === 8 && !(myDni[i] >= "A" && myDni[i] <= "Z"))
+                return false;
+        }
+    }
+
+
+})();
+
 //ejercicio con un objeto en javascript
 console.log("Ejercicio con objeto en javascript/////////////////////");
 
