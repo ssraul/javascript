@@ -219,3 +219,197 @@ var ex10 = (function () {
 
 })();
 
+console.log("************ practicas con funciones ******************");
+var practica01 =( function (){
+    var x, y, z;
+    function suma01(a,b){
+        return a + b;
+    }
+    function suma02(a,b){
+        var c;
+        return c = a + b;
+    }
+        function suma03(a,b){
+        y = a+b;
+        
+    }
+    
+    x = suma01(2,3);
+    z= suma02(2,2);
+    suma02(1,1);
+    suma03(5,6);
+    
+    
+    console.log(x);//5
+    console.log(y);//11
+    console.log(z);//4
+    //console.log(c);//la c no esta definida
+    
+})();
+console.log("***************** Ejemplo de modulo *******************");
+var modul01 =( function (){
+    var x,y;
+    function suma(a,b){
+        return a + b;
+    }
+    return {
+        publicX : x,
+        publicY : y,
+        publicSuma : suma,
+        resta : function (a,b){
+            return a-b;
+        }
+    };
+})();
+console.log(modul01);
+modul01.publicX = 3;
+modul01.publicY = 5;
+var z1 = modul01.publicSuma(2,7);
+var z2 = modul01.resta(6,9);
+console.log(modul01);
+console.log(z1);
+console.log(z2);
+
+var funcio01 =( function (){
+    function suma(a,b){
+        return a + b;
+    }
+    console.log("------------------");
+    console.log(suma);
+    console.log(suma.length);
+    console.log(suma.prototype);
+    
+})();
+console.log("********* Ejemplo de objetos ************");
+var objete01 =( function (){
+    //objecte
+    var alumne = function (){
+        var nom, cognoms;
+//        function nomComplet(){
+//            return nom +" "+ cognoms;
+//        }
+    };
+    
+    var pere = new alumne();
+    pere.nom = "Pere";
+    pere.cognoms = "riu net";
+    console.log(pere);
+    pere.edat = 15;
+    console.log(pere);
+
+    var carol = new alumne();
+    carol.nom = "Carol";
+    carol.cognoms = "net";
+    console.log(carol);
+    carol.ulls = "Blaus";
+    console.log(carol);
+    
+    alumne.cabell = "marron";
+    console.log(pere);
+    console.log(carol);
+    
+    var pau = new alumne();
+    pau.nom ="Pau";
+    pau.cognoms = "estrada";
+    console.log(pau);
+    console.log(alumne.cabell);
+})();
+
+var objete02 =( function (){
+    console.log("*************** Objeto como literal *******************");
+    var pau ={
+        nom:"Pau",
+        cognoms : "Perez",
+        edat : 16,
+        nomSenser: function (){
+            return this.nom + " " + this.cognoms;
+        }
+    };
+    
+    console.log(pau);
+    console.log(pau.nomSenser());
+//    var marta = new pau();// pau no es un constructor
+    pau.nom="Raul";
+    console.log(pau.nomSenser());
+    
+    console.log("********** ejemplo de clase ********************");
+    
+    var alumne = function (nom, cognoms, edad){
+        //propietats
+        this.nom = nom;
+        this.cognoms = cognoms;
+        this.edad = edad;
+        
+        //metodes publics
+        this.nomSenser = function (){
+            return "Nombre: "+this.nom + " Cognoms: " +this.cognoms+" Edad: "+this.edad;
+        };
+        
+        this.publicCognomsNom = function (){
+          return cognomsNom.apply(this);  
+        };
+        
+        //metodos privados
+        var cognomsNom = function (){
+            return this.cognoms + ", " +this.nom;
+        };
+    };
+    
+    console.log(alumne);
+    var marta = new alumne("Marta", "Sanchez", 18);
+    console.log(marta);
+    console.log("Funcion Publica: "+marta.nomSenser());
+    console.log("Funcion privada: "+marta.publicCognomsNom());
+    
+})();
+
+var modul03 =( function (parametre){
+    console.log("Ejecuta el modulo --------------------------");
+    console.log(parametre);
+})(25);
+
+var modul04 =( function (parametre){
+    console.log("Ejecuta el modulo -----------------------------------");
+    console.log(parametre);
+});
+
+modul04(24);
+modul04(29);
+
+var funcio01 =( function (){ 
+    console.log("Mas funciones--------------------------------");
+    function suma(a,b){
+        console.log(suma.length);//torna el numero de parametres
+        console.log(arguments.length);//nombre de parametres passats a la funcio.
+        console.log(arguments);
+        return a + b;
+    }
+    
+    function suma2(){
+        console.log(suma2.length);//torna el numero de parametres
+        console.log(arguments.length);
+        var i, sum =0;
+        for (i = 0; i < arguments.length; i++) {
+            sum += arguments [i];
+        }
+        return sum;
+    }
+    
+    var z;
+    z = suma(3,4);
+    z = suma(3);
+    z = suma();
+    z = suma (3,4,5,6,7,8);
+    z = suma2(3,4,5,6,8,7);
+    console.log(z);
+    
+    //canvi context
+    //ex : calcular maxim
+    
+    console.log("---maxim---");
+    var x = [2,5,8,5,8,78,89,12];
+    var max = Math.max.apply(null, x);
+    console.log(x);
+    console.log(max);
+    
+})();
