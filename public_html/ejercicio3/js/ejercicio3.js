@@ -146,6 +146,8 @@ var ej05 = (function () {
     var e1 = new agenda("raul", "raul@gmail.com", "933531041");
     var e2 = new agenda("eva", "eva@gmail.com", "616978548");
     var e3 = new agenda("hector", "hector@gmail.com", "936589547");
+    //var contactos =[e1,e2,e3];
+    //console.log("Contacto numero :"+contactos[2].nombre);
     console.log(e1.toString());
     console.log(e2.toString());
     console.log(e3.toString());
@@ -192,5 +194,5 @@ var ej06 = (function () {
     console.log(e3.id);
     //console.log(e3.deleteIn("0"));
     console.log(contactos);
-    
+      
 })(); 
