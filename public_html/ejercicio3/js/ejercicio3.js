@@ -42,7 +42,7 @@ var ej01 = (function () {
     };
 
     //instanciamos el objeto y le pasamos los parametros
-    var uno = new triangulo(3, 5);
+    var uno = new triangulo(6, 5);
     //imprimimos por pantalla todos los datos.
     console.log(uno.toString());
 
@@ -119,23 +119,118 @@ var ej03 = (function () {
 
 })();
 
+console.log("************** Ejercicio 4 ***********************");
+//ambito de ejecución delimitado.
+var ej04 = (function () {
+
+    var Reloj = function () {
+
+        //propiedades
+        this.hora;
+        this.min;
+        this.seg;
+
+        this.establecerHora = function (h, m, s) {
+            this.hora = h;
+            this.min = m;
+            this.seg = s;
+
+        };
+        this.establecerHoraString = function (hms) {
+            var a = hms.split(":");
+            this.hora = a[0];
+            this.min = a[1];
+            this.seg = a[2];
+        };
+
+        this.incrementarSeg = function () {
+            this.seg++;
+            if (this.seg === 60) {
+                this.seg = "00";
+                this.min++;
+            }
+        };
+        this.incrementarMin = function () {
+            this.min++;
+            if (this.min === 60) {
+                this.min = "00";
+                this.hora++;
+            }
+        };
+        this.incrementarHora = function () {
+            this.hora++;
+            if (this.hora === 24) {
+                this.hora = "00";
+            }
+        };
+
+        this.toString = function () {
+            return this.hora + ":" + this.min + ":" + this.seg;
+        };
+
+        this.reiniciar = function () {
+            this.hora = 0;
+            this.min = 0;
+            this.seg = 0;
+        };
+    };
+
+    var r1 = new Reloj();
+    r1.establecerHora(10, 11, 12);
+    r1.establecerHoraString("01:59:59");
+    //r1.incrementarHora();
+    //r1.incrementarMin();
+    r1.incrementarSeg();
+    console.log(r1.toString());
+})();
+
 console.log("************** Ejercicio 5 ***********************");
 //ambito de ejecución delimitado.
 var ej05 = (function () {
 
     var contador = 1;
-    var agenda = function (nombre, correo, telefono) {
+    var Entrada = function (nombre, correo, telefono) {
+        
         if (arguments.length === 3 && isNaN(nombre) && isNaN(correo) && !isNaN(telefono)) {
 
-            //propiedades
-            this.nombre = nombre;
-            this.correo = correo;
-            this.telefono = telefono;
-            this.id = contador++;
-
+            //propiedades            
+            var nombre =nombre;
+            var correo = correo;
+            var telefono = telefono;
+            var id = contador++;
+            
+            //getters y setters
+            this.getNombre = function(){
+                return nombre;
+            };
+            
+            this.setNombre = function (nuevo_nombre) {
+                nombre = nuevo_nombre;
+            };
+            
+            this.getCorreo = function(){
+                return correo;
+            };
+            
+            this.setCorreo = function (nuevo_correo){
+              correo = nuevo_correo;  
+            };
+            
+            this.getTelefono = function(){
+                return telefono;
+            };
+            
+            this.setTelefono = function (nuevo_telefono){
+              telefono = nuevo_telefono;  
+            };
+            
+            this.getId = function () {
+                return id;
+            };
+            
             //metodos
             this.toString = function () {
-                return"Id: "+this.id+", Nombre: " + this.nombre + ", Correo: " + this.correo + ", Telefono: " + this.telefono;
+                return"Id: "+id+", Nombre: " + nombre + ", Correo: " + correo + ", Telefono: " + telefono;
             };
         } else {
             console.log("Numero de argumentos incorrectos");
@@ -143,9 +238,15 @@ var ej05 = (function () {
     };
 
     //instanciar objetos.
-    var e1 = new agenda("raul", "raul@gmail.com", "933531041");
-    var e2 = new agenda("eva", "eva@gmail.com", "616978548");
-    var e3 = new agenda("hector", "hector@gmail.com", "936589547");
+    var e1 = new Entrada("raul", "raul@gmail.com", "933531041");
+    var e2 = new Entrada("eva", "eva@gmail.com", "616978548");
+    var e3 = new Entrada("hector", "hector@gmail.com", "936589547");
+    e1.setNombre("Daniel");
+    e1.setCorreo("nuevo@gmail.com");
+    console.log(e1.getNombre());
+    console.log(e1.getCorreo());
+    console.log(e1.getId());
+    
     //var contactos =[e1,e2,e3];
     //console.log("Contacto numero :"+contactos[0].nombre);
     console.log(e1.toString());
@@ -156,43 +257,53 @@ var ej05 = (function () {
 console.log("************** Ejercicio 6 ***********************");
 //ambito de ejecución delimitado.
 var ej06 = (function () {
+      
+    //objeto Entrada
+    var Entrada = function (id,nombre,correo,telefono) {
+        this.id=id;
+        this.nombre=nombre;
+        this.correo=correo;
+        this.telefono=telefono;
+        this.toString = function () {
+            return this.id+" "+this.nombre+" "+this.correo+" "+this.telefono+"";
+        };
+    };
     
-    var contactos = [];
-    var contador =1;
-    var agenda = function () {
-        this.nombre = '';
-        this.correo = '';
-        this.telefono = '';
-        this.id = contador++;
-        
-        this.addIn = function (nombre, correo, telefono){
-            this.nombre = nombre;
-            this.correo = correo;
-            this.telefono = telefono;
-            var nuevoContacto = [this.id+"\", \""+this.nombre + "\", \""+ this.correo+ "\", \""+this.telefono];
-            contactos.push(nuevoContacto);
-            return "Contacto añadido con exito.";
+    var e1 = new Entrada("1","Raul","raul@gmail.com","936587777");
+    var e2 = new Entrada("2","Eva","eva@gmail.com","9345632");
+    var e3 = new Entrada("3","Hector","hector@gmail.com","9220000");
+    
+    var listaContactos =[e1,e2,e3];
+    console.log("Lista de contactos:\n"+listaContactos[2].nombre);
+    
+    //objeto Agenda   
+    var Agenda = function () {
+        this.afegirEntrada = function (nom, correo, telefono) {
+            var x = new Entrada(listaContactos.length+1,nom,correo,telefono);
+            listaContactos.push(x);
+            return listaContactos;
         };
         
-        this.deleteIn = function (id){
-          var pos = contactos[id+1].pop();
-          return pos;
-          
+        this.buscarNombre = function (nombre) {
+            var i;
+            for (i = 0; i < listaContactos.length; i++) {               
+                if(listaContactos[i].nombre===nombre){
+                    return "Datos :"+listaContactos[i];
+                }else{
+                    return "No existe el usuario.";
+                }
+            }
         };
         
     };
     
-    var e1 = new agenda();
-    var e2 = new agenda();
-    var e3 = new agenda();
-   
-    console.log(e1.addIn("raul","casa","ter"));
-    console.log(e1.id);
-    console.log(e2.addIn("eva","vero","neo"));
-    console.log(e2.id);
-    console.log(e3.addIn("hector","pew","xiu"));
-    console.log(e3.id);
-    //console.log(e3.deleteIn("0"));
-    console.log(contactos);
+    var nuevaAgenda = new Agenda();
+    nuevaAgenda.afegirEntrada("Manuel","manuel@gmail.com","9658744");
+    console.log("Lista de contactos "+listaContactos[2]);
+    
+    console.log(nuevaAgenda.buscarNombre("Raul"));
+    
+    
+    
       
-})(); 
+})();
