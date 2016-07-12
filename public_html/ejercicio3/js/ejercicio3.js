@@ -190,47 +190,47 @@ var ej05 = (function () {
 
     var contador = 1;
     var Entrada = function (nombre, correo, telefono) {
-        
+
         if (arguments.length === 3 && isNaN(nombre) && isNaN(correo) && !isNaN(telefono)) {
 
             //propiedades            
-            var nombre =nombre;
+            var nombre = nombre;
             var correo = correo;
             var telefono = telefono;
             var id = contador++;
-            
+
             //getters y setters
-            this.getNombre = function(){
+            this.getNombre = function () {
                 return nombre;
             };
-            
+
             this.setNombre = function (nuevo_nombre) {
                 nombre = nuevo_nombre;
             };
-            
-            this.getCorreo = function(){
+
+            this.getCorreo = function () {
                 return correo;
             };
-            
-            this.setCorreo = function (nuevo_correo){
-              correo = nuevo_correo;  
+
+            this.setCorreo = function (nuevo_correo) {
+                correo = nuevo_correo;
             };
-            
-            this.getTelefono = function(){
+
+            this.getTelefono = function () {
                 return telefono;
             };
-            
-            this.setTelefono = function (nuevo_telefono){
-              telefono = nuevo_telefono;  
+
+            this.setTelefono = function (nuevo_telefono) {
+                telefono = nuevo_telefono;
             };
-            
+
             this.getId = function () {
                 return id;
             };
-            
+
             //metodos
             this.toString = function () {
-                return"Id: "+id+", Nombre: " + nombre + ", Correo: " + correo + ", Telefono: " + telefono;
+                return"Id: " + id + ", Nombre: " + nombre + ", Correo: " + correo + ", Telefono: " + telefono;
             };
         } else {
             console.log("Numero de argumentos incorrectos");
@@ -246,7 +246,7 @@ var ej05 = (function () {
     console.log(e1.getNombre());
     console.log(e1.getCorreo());
     console.log(e1.getId());
-    
+
     //var contactos =[e1,e2,e3];
     //console.log("Contacto numero :"+contactos[0].nombre);
     console.log(e1.toString());
@@ -257,53 +257,154 @@ var ej05 = (function () {
 console.log("************** Ejercicio 6 ***********************");
 //ambito de ejecución delimitado.
 var ej06 = (function () {
-      
+
     //objeto Entrada
-    var Entrada = function (id,nombre,correo,telefono) {
-        this.id=id;
-        this.nombre=nombre;
-        this.correo=correo;
-        this.telefono=telefono;
+    var Entrada = function (id, nombre, correo, telefono) {
+        this.id = id;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.telefono = telefono;
         this.toString = function () {
-            return this.id+" "+this.nombre+" "+this.correo+" "+this.telefono+"";
+            return this.id + " " + this.nombre + " " + this.correo + " " + this.telefono + "";
         };
     };
-    
-    var e1 = new Entrada("1","Raul","raul@gmail.com","936587777");
-    var e2 = new Entrada("2","Eva","eva@gmail.com","9345632");
-    var e3 = new Entrada("3","Hector","hector@gmail.com","9220000");
-    
-    var listaContactos =[e1,e2,e3];
-    console.log("Lista de contactos:\n"+listaContactos[2].nombre);
-    
+
+    var e1 = new Entrada("1", "Raul", "raul@gmail.com", "936587777");
+    var e2 = new Entrada("2", "Eva", "eva@gmail.com", "9345632");
+    var e3 = new Entrada("3", "Hector", "hector@gmail.com", "9220000");
+
+    var listaContactos = [e1, e2, e3];
+    console.log("Lista de contactos:\n" + listaContactos[2].nombre);
+
     //objeto Agenda   
     var Agenda = function () {
         this.afegirEntrada = function (nom, correo, telefono) {
-            var x = new Entrada(listaContactos.length+1,nom,correo,telefono);
+            var x = new Entrada(listaContactos.length + 1, nom, correo, telefono);
             listaContactos.push(x);
             return listaContactos;
         };
-        
+
         this.buscarNombre = function (nombre) {
             var i;
-            for (i = 0; i < listaContactos.length; i++) {               
-                if(listaContactos[i].nombre===nombre){
-                    return "Datos :"+listaContactos[i];
-                }else{
-                    return "No existe el usuario.";
+            for (i = 0; i < listaContactos.length; i++) {
+                if (listaContactos[i].nombre === nombre) {
+                    return "Datos :" + listaContactos[i];
                 }
             }
         };
-        
+
+        this.buscarTelefono = function (telefono) {
+            var i;
+            for (i = 0; i < listaContactos.length; i++) {
+                if (listaContactos[i].telefono === telefono) {
+                    return "Datos :" + listaContactos[i].nombre;
+                }
+            }
+        };
+
+        this.buscarDatosId = function (id) {
+            var i;
+            for (i = 0; i < listaContactos.length; i++) {
+                if (listaContactos[i].id === id) {
+                    return "Datos :" + listaContactos[i];
+                }
+            }
+        };
+
+        this.eliminarEntrada = function (id) {
+            var i;
+            for (i = 0; i < listaContactos.length; i++) {
+                if (listaContactos[i].id === id) {
+                    listaContactos.splice(i, 1);
+                    return "Entrada eliminada con exito.";
+                }
+            }
+
+        };
+
+        this.buscarTelefonoId = function (id) {
+            var i;
+            for (i = 0; i < listaContactos.length; i++) {
+                if (listaContactos[i].id === id) {
+                    return "Datos :" + listaContactos[i].telefono;
+                }
+            }
+            return "No existe id";
+
+        };
+
+    };
+
+    var nuevaAgenda = new Agenda();
+    nuevaAgenda.afegirEntrada("Manuel", "manuel@gmail.com", "9658744");
+    console.log("Lista de contactos " + listaContactos[2]);
+
+    console.log(nuevaAgenda.buscarNombre("Raul"));
+    console.log(nuevaAgenda.buscarTelefono("9220000"));
+    console.log(nuevaAgenda.buscarDatosId("2"));
+    console.log("Numero de contactos: " + listaContactos.length);
+    console.log(nuevaAgenda.eliminarEntrada("1"));
+    console.log("listado :" + listaContactos);
+    console.log("Numero de contactos: " + listaContactos.length);
+    console.log(nuevaAgenda.buscarTelefonoId("4"));
+
+
+})();
+
+var ej04reloj = (function () {
+
+    var rellotge = function () {
+        this.hora;
+        this.minut;
+        this.segon;
+
+        if (arguments.length === 0) {
+            this.hora = 0;
+            this.minut = 0;
+            this.segon = 0;
+
+        } else if (arguments.lenght === 1) {
+            var re = /^([0-1]\d|2[0-3]):([0-5\d]):([0-5\d])$/;
+            var x = arguments[0].match(re);
+            if (x===null) {
+                    throw "formato incorreco";
+            }else{
+                this.hora=parseInt(x[1]);
+                this.minut=parseInt(x[2]);
+                this.segon=parseInt(x[3]);
+            }
+        }else if(arguments.length===3){
+                 this.hora=validarHora(arguments[0]);
+                this.minut=validarMinut(arguments[1]);
+                this.segon=validarSegon(arguments[2]);
+        }else{
+            throw "nobre de parametres incorrecte";
+        }
+
+        function validarHora (h) {
+            h = parseInt(h);
+            if(isNaN(h))
+                throw "Introdueix un valor numeric";
+            if(h%24)
+                throw "introduce un valore en 0 y 23";
+            return h;            
+        };
+
+
+
     };
     
-    var nuevaAgenda = new Agenda();
-    nuevaAgenda.afegirEntrada("Manuel","manuel@gmail.com","9658744");
-    console.log("Lista de contactos "+listaContactos[2]);
-    
-    console.log(nuevaAgenda.buscarNombre("Raul"));
-    
-    
-    
-      
+    try {
+        
+        var r1 = new rellotge();
+        var r2 = new rellotge();
+        var r3 = new rellotge();
+        
+        
+    } catch (e) {
+        console.log(e);
+    }
+
+
+
 })();
